@@ -16,7 +16,7 @@ public class ChangeColor : MonoBehaviour
     {
         colorShip = gameObject.GetComponent<SpriteRenderer>();
         // Create a random color
-        currentColor = UnityEngine.Random.Range(1, listColor.Length - 1);
+        currentColor = UnityEngine.Random.Range(0, listColor.Length - 1);
 
         try
         {
