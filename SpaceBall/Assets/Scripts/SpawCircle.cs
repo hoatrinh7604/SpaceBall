@@ -7,6 +7,7 @@ public class SpawCircle : MonoBehaviour
     public int maximumCircle = 50;
     public int currentCircles = 0;
     [SerializeField] float spawTime;
+    [SerializeField] GameObject prefabStar;
     [SerializeField] GameObject prefabCircle;
     [SerializeField] Transform spawPointLeftBottom;
     [SerializeField] Transform spawPointRightUp;
@@ -22,7 +23,7 @@ public class SpawCircle : MonoBehaviour
     {
         if(spawTime > 3.0f && currentCircles <= maximumCircle)
         {
-            RandomSpawCircle();
+            RandomSpawStar();
             currentCircles++;
 
             spawTime = 0.0f;
@@ -30,14 +31,28 @@ public class SpawCircle : MonoBehaviour
         spawTime += Time.deltaTime;
     }
 
-    void RandomSpawCircle()
+    IEnumerator WaitForTheTime(GameObject star, float time, float posX, float posY)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(star);
+        SpawCircleAtPos(posX, posY);
+    }
+
+    void RandomSpawStar()
     {
         //Get random position
         float posX = UnityEngine.Random.Range(spawPointLeftBottom.position.x, spawPointRightUp.position.x);
         float posY = UnityEngine.Random.Range(spawPointLeftBottom.position.y, spawPointRightUp.position.y);
 
+        GameObject newStar = Instantiate(prefabStar, new Vector3(posX, posY, 1), Quaternion.identity);
+        print(prefabStar.GetComponent<Animation>().clip.length);
+        StartCoroutine(WaitForTheTime(newStar, prefabStar.GetComponent<Animation>().clip.length, posX, posY));
+
+    }
+
+    void SpawCircleAtPos(float posX, float posY)
+    {
         Instantiate(prefabCircle, new Vector3(posX, posY, 1), Quaternion.identity);
-        
     }
 
     void reDuceCurrentCircles()
