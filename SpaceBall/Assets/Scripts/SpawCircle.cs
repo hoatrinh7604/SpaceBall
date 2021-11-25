@@ -52,7 +52,8 @@ public class SpawCircle : MonoBehaviour
 
     void SpawCircleAtPos(float posX, float posY)
     {
-        Instantiate(prefabCircle, new Vector3(posX, posY, 1), Quaternion.identity);
+        GameObject a = Instantiate(prefabCircle, new Vector3(posX, posY, 1), Quaternion.identity);
+        a.GetComponent<CircleController>().SetStartSpaw(true);
     }
 
     void reDuceCurrentCircles()
