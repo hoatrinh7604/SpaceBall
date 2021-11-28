@@ -45,8 +45,7 @@ public class SpawCircle : MonoBehaviour
         float posY = UnityEngine.Random.Range(spawPointLeftBottom.position.y, spawPointRightUp.position.y);
 
         GameObject newStar = Instantiate(prefabStar, new Vector3(posX, posY, 1), Quaternion.identity);
-        print(prefabStar.GetComponent<Animation>().clip.length);
-        StartCoroutine(WaitForTheTime(newStar, prefabStar.GetComponent<Animation>().clip.length, posX, posY));
+        StartCoroutine(WaitForTheTime(newStar, newStar.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length, posX, posY));
 
     }
 

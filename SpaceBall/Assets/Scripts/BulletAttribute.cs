@@ -23,7 +23,8 @@ public class BulletAttribute : MonoBehaviour
     {
         if(collision.gameObject.tag == "Circle")
         {
-            Destroy(this.gameObject);
+            if(!collision.gameObject.GetComponent<CircleController>().IsStar())
+                Destroy(this.gameObject);
         }
     }
 

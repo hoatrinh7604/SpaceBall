@@ -385,3 +385,4 @@ MonoBehaviour:
   speedCircle: 5
   damageCircle: 0
   prefabCircle: {fileID: 1822229480070099863}
+  circleBang: {fileID: 4777980668660974499, guid: 178489246fd1b5346b2dc8ef2815ccb4, type: 3}

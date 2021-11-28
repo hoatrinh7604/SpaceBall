@@ -7,7 +7,7 @@ using TMPro;
 public class CircleController : MonoBehaviour
 {
     private int indexCircle=0;
-    private float minSize = 0.01f;
+    private float minSize = 0.05f;
 
     [SerializeField] SpriteRenderer spriteCircle;
     [SerializeField] Rigidbody2D ridCircle;
@@ -22,7 +22,9 @@ public class CircleController : MonoBehaviour
     [SerializeField] GameObject prefabCircle;
     private bool canSpaw = false;
     private bool isStar = false;
-    
+
+    [SerializeField] GameObject circleBang;
+
     private void ChangeColor(int currentColor)
     {
         try
@@ -73,6 +75,7 @@ public class CircleController : MonoBehaviour
             {
                 indexCircle--;
                 SpawChildCircle(this.gameObject.transform, indexCircle);
+                Instantiate(circleBang, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
             else
@@ -106,7 +109,7 @@ public class CircleController : MonoBehaviour
                 //Points
                 Points.GetComponent<TextMeshProUGUI>().text = pointCircle[indexCircle].ToString();
                 transform.localScale = new Vector3(sizeCircle[indexCircle], sizeCircle[indexCircle], 1);
-                ridCircle.AddForce(new Vector2(RandomDirection() * speedCircle / sizeCircle[indexCircle], RandomDirection() * speedCircle / sizeCircle[indexCircle]));
+                ridCircle.AddForce(new Vector3(RandomDirection() * speedCircle / sizeCircle[indexCircle], RandomDirection() * speedCircle / sizeCircle[indexCircle]));
             }
 
             //Random color
@@ -127,12 +130,15 @@ public class CircleController : MonoBehaviour
     {
         GameObject a = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
         GameObject b = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
+        GameObject c = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
         print("Index = " + indexCircle);
         a.GetComponent<CircleController>().SetCircleFolowIndex(index);
         b.GetComponent<CircleController>().SetCircleFolowIndex(index);
+        c.GetComponent<CircleController>().SetCircleFolowIndex(index);
 
         a.GetComponent<CircleController>().SetStartSpaw(false);
         b.GetComponent<CircleController>().SetStartSpaw(false);
+        c.GetComponent<CircleController>().SetStartSpaw(false);
     }
 
     void SetCircleFolowIndex(int index)
@@ -158,4 +164,8 @@ public class CircleController : MonoBehaviour
         canSpaw = true;
     }
 
+    public bool IsStar()
+    {
+        return isStar;
+    }
 }
