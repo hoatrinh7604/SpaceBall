@@ -135,7 +135,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2.1, y: 2.1}
+  m_SizeDelta: {x: 3, y: 2.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1704082088
 CanvasRenderer:
@@ -167,8 +167,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 2
+  m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -309,12 +309,12 @@ SpriteRenderer:
   m_SortingLayerID: 1688110743
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 231bcfc77c894e342945f13896e6ef9b, type: 3}
+  m_Sprite: {fileID: 8016960355062802271, guid: 79e6e2a271f49d84cbaa8d254430e41a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.13, y: 2.13}
+  m_Size: {x: 4.89, y: 4.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -354,9 +354,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.044647455}
   serializedVersion: 2
-  m_Radius: 1.065
+  m_Radius: 2.4044082
 --- !u!114 &1822229480070099862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,17 +371,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteCircle: {fileID: 0}
   ridCircle: {fileID: 0}
-  sizeCircle:
-  - 0.2
-  - 0.25
-  - 0.3
-  - 0.35
   pointCircle: 050000000a0000000f00000014000000
   colorCircle:
-  - {fileID: 21300000, guid: 2f8ae87c661c97a44a354587e16bd978, type: 3}
-  - {fileID: 21300000, guid: 10d9711c739d54e49b9c74eebe1664d9, type: 3}
-  - {fileID: 21300000, guid: 254974b056e9e1c479e7bf8d30417010, type: 3}
-  - {fileID: 21300000, guid: 231bcfc77c894e342945f13896e6ef9b, type: 3}
+  - {fileID: 8016960355062802271, guid: 79e6e2a271f49d84cbaa8d254430e41a, type: 3}
+  - {fileID: 1095573800834144694, guid: 79e6e2a271f49d84cbaa8d254430e41a, type: 3}
+  - {fileID: -2895846352700540677, guid: 79e6e2a271f49d84cbaa8d254430e41a, type: 3}
+  - {fileID: 7197120458697555805, guid: 79e6e2a271f49d84cbaa8d254430e41a, type: 3}
   speedCircle: 5
   damageCircle: 0
   prefabCircle: {fileID: 1822229480070099863}

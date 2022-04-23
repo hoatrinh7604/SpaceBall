@@ -12,7 +12,7 @@ public class CircleController : MonoBehaviour
     [SerializeField] SpriteRenderer spriteCircle;
     [SerializeField] Rigidbody2D ridCircle;
     
-    [SerializeField] float[] sizeCircle = {0.2f, 0.3f, 0.35f, 0.4f};
+    private float[] sizeCircle = {0.13f, 0.15f, 0.18f, 0.2f};
     [SerializeField] int[] pointCircle = {5, 10, 15, 20};
     public Sprite[] colorCircle;
     public float speedCircle = 100;
@@ -24,6 +24,8 @@ public class CircleController : MonoBehaviour
     private bool isStar = false;
 
     [SerializeField] GameObject circleBang;
+
+    private GameObject gameControler;
 
     private void ChangeColor(int currentColor)
     {
@@ -57,6 +59,8 @@ public class CircleController : MonoBehaviour
 
         Points = gameObject.transform.Find("Canvas").gameObject;
         Points = Points.transform.Find("Points").gameObject;
+
+        gameControler = GameObject.FindGameObjectWithTag("GameController");
     }
 
     private void FixedUpdate()
@@ -70,7 +74,9 @@ public class CircleController : MonoBehaviour
         if(collision.gameObject.tag == "Bullet" && !isStar)
         {
             pointCircle[indexCircle]-=5;
-            
+
+            gameControler.GetComponent<GameController>().UpdateScore(5);
+
             if (pointCircle[indexCircle] <= 0)
             {
                 indexCircle--;
@@ -82,6 +88,13 @@ public class CircleController : MonoBehaviour
             {
                 Points.GetComponent<TextMeshProUGUI>().text = pointCircle[indexCircle].ToString();
             }
+        }
+
+        if (collision.gameObject.tag == "Player" && !isStar)
+        {
+            Instantiate(circleBang, collision.gameObject.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+            gameControler.GetComponent<GameController>().GameOver();
         }
     }
 
@@ -130,15 +143,15 @@ public class CircleController : MonoBehaviour
     {
         GameObject a = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
         GameObject b = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
-        GameObject c = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
-        print("Index = " + indexCircle);
+        //GameObject c = Instantiate(prefabCircle, positionToSpaw.position, Quaternion.identity);
+
         a.GetComponent<CircleController>().SetCircleFolowIndex(index);
         b.GetComponent<CircleController>().SetCircleFolowIndex(index);
-        c.GetComponent<CircleController>().SetCircleFolowIndex(index);
+        //c.GetComponent<CircleController>().SetCircleFolowIndex(index);
 
         a.GetComponent<CircleController>().SetStartSpaw(false);
         b.GetComponent<CircleController>().SetStartSpaw(false);
-        c.GetComponent<CircleController>().SetStartSpaw(false);
+        //c.GetComponent<CircleController>().SetStartSpaw(false);
     }
 
     void SetCircleFolowIndex(int index)
